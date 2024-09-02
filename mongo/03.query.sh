@@ -38,12 +38,12 @@ db.inventory.find( {
      $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ]
 } )
 
-{
+db.inventory.find( {
    status: 'A',
    $or: [
      { qty: { $lt: 30 } }, { item: { $regex: '^p' } }
    ]
-}
+})
 
 
 db.inventory.insertMany( [

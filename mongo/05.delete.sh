@@ -6,11 +6,8 @@ db.inventory.insertMany( [
    { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" },
 ] );
 
-
-db.inventory.deleteMany({})
-
-
 db.inventory.deleteMany({ status : "A" })
 
 db.inventory.deleteOne( { status: "D" } )
 
+db.inventory.deleteMany({})
