@@ -9,28 +9,28 @@ db.inventory.insertMany([
 # 컬렉션에서 모든 문서 선택
 db.inventory.find( {} )
 
-SELECT * FROM inventory
+# SELECT * FROM inventory
 
 # 동등성 조건 지정
 db.inventory.find( { status: "D" } )
 
-SELECT * FROM inventory WHERE status = "D"
+# SELECT * FROM inventory WHERE status = "D"
 
 
 # 쿼리 연산자를 사용하여 조건 지정
 db.inventory.find( { status: { $in: [ "A", "D" ] } } )
 
-SELECT * FROM inventory WHERE status in ("A", "D")
+# SELECT * FROM inventory WHERE status in ("A", "D")
 
 # AND 조건 지정
 db.inventory.find( { status: "A", qty: { $lt: 30 } } )
 
-SELECT * FROM inventory WHERE status = "A" AND qty < 30
+# SELECT * FROM inventory WHERE status = "A" AND qty < 30
 
 # OR 조건 지정
 db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } )
 
-SELECT * FROM inventory WHERE status = "A" OR qty < 30
+# SELECT * FROM inventory WHERE status = "A" OR qty < 30
 
 # AND OR 조건 지정
 db.inventory.find( {

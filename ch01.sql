@@ -431,6 +431,39 @@ INSERT INTO orders (order_no,cust_id,emp_id,order_date,required_date,shipped_dat
 	 ('e7d0fd4e5e142ee027230967c5340bf51725154198',8,35,'2023-11-09','2023-11-14','2023-11-14');
 
 
+-- 주문 데이터 삽입 (200개)
+DO $$
+DECLARE
+    i INTEGER;
+    random_emp INTEGER;
+    random_cust INTEGER;
+    random_prod INTEGER;
+    random_qty INTEGER;
+    random_discount FLOAT;
+    order_date DATE;
+    required_date DATE;
+    shipped_date DATE;
+    order_no TEXT;
+BEGIN
+    FOR i IN 1..200 LOOP
+        random_emp := (SELECT emp_id FROM employee ORDER BY RANDOM() LIMIT 1);
+        random_cust := (SELECT cust_id FROM customer ORDER BY RANDOM() LIMIT 1);
+        random_prod := (SELECT product_id FROM product ORDER BY RANDOM() LIMIT 1);
+        random_qty := (SELECT (RANDOM() * 10 + 1)::INTEGER);
+        random_discount := (RANDOM() * 0.1)::FLOAT;
+        order_date := NOW() - INTERVAL '1 day' * (RANDOM() * 365)::INTEGER;
+        required_date := order_date + INTERVAL '1 day' * (RANDOM() * 10 + 1)::INTEGER;
+        shipped_date := required_date + INTERVAL '1 day' * (RANDOM() * 5)::INTEGER;
+        order_no := (select md5(random()::text) || extract(epoch from now())::INT)::TEXT;
+
+        INSERT INTO orders (cust_id, emp_id, order_date, required_date, shipped_date, order_no)
+        VALUES (random_cust, random_emp, order_date, required_date, shipped_date, order_no);
+
+        INSERT INTO order_details (order_id, product_id, unit_price, quantity, discount)
+        VALUES (currval(pg_get_serial_sequence('orders','order_id')), random_prod, (SELECT unit_price FROM product WHERE product_id = random_prod), random_qty, random_discount);
+    END LOOP;
+END $$;
+
 
 INSERT INTO order_details (order_id,product_id,unit_price,quantity,discount) VALUES
 	 (1,1,50000,2,0.06591868112331127),

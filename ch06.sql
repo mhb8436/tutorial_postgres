@@ -155,7 +155,7 @@ SELECT name AS 이름
       ,address AS 주소
       ,gender AS 성별
 FROM employee
-WHERE gender = '여'; -- PostgreSQL에서는 성별을 'F'로 사용하는 경우가 일반적입니다.
+WHERE gender = '여';
 
 
 -- 뷰 확인
