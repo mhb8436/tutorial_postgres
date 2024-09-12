@@ -685,3 +685,50 @@ INSERT INTO order_details (order_id,product_id,unit_price,quantity,discount) VAL
 	 (198,7,7000,10,0.01705624178469307),
 	 (199,3,2000,9,0.07595734055950346),
 	 (200,9,1500,7,0.09444933909804476);
+
+
+UPDATE employee
+SET manager_no=21
+WHERE emp_id=23;
+UPDATE employee
+SET manager_no=21
+WHERE emp_id=22;
+UPDATE employee
+SET manager_no=21
+WHERE emp_id=24;
+UPDATE employee
+SET manager_no=25
+WHERE emp_id=26;
+UPDATE employee
+SET manager_no=25
+WHERE emp_id=27;
+UPDATE employee
+SET manager_no=28
+WHERE emp_id=29;
+UPDATE employee
+SET manager_no=28
+WHERE emp_id=30;
+UPDATE employee
+SET manager_no=28
+WHERE emp_id=31;
+UPDATE employee
+SET manager_no=28
+WHERE emp_id=32;
+UPDATE employee
+SET manager_no=33
+WHERE emp_id=34;
+UPDATE employee
+SET manager_no=33
+WHERE emp_id=35;
+UPDATE employee
+SET manager_no=33
+WHERE emp_id=36;
+UPDATE employee
+SET manager_no=37
+WHERE emp_id=38;
+UPDATE employee
+SET manager_no=37
+WHERE emp_id=39;
+UPDATE employee
+SET manager_no=37
+WHERE emp_id=40;
